@@ -1,0 +1,37 @@
+* {
+  background-color: #e7dbd6;
+  font-family: Segoe UI;
+}
+
+/* Website Name and Description */
+.websiteName {
+  background-color: aqua;
+  font-size: 3.5em;
+  text-align: center;
+}
+.websiteDescription {
+  font-size: 1.2em;
+  text-align: center;
+  font-style: italic;
+  padding-bottom: 4vh;
+}
+
+/* Website Grid Structure */
+.websiteStructure {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr;
+  grid-column-gap: 1vw;
+}
+.websiteSection {
+  background-color: white;
+  padding: 0.3em;
+}
+
+/* Website Sections */
+.sectionName {
+  font-size: 1.7em;
+  padding: 0 0.3em 0.3em 0.7em;
+}
+.sectionContent {
+  padding: 0 0.3em 0.3em 0.3em;
+}
