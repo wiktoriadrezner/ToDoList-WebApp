@@ -1,19 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
 * {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
   background-color: #e7dbd6;
-  font-family: Segoe UI;
+  font-family: Open Sans;
 }
 
 /* Website Name and Description */
 .websiteName {
   background-color: aqua;
-  font-size: 3.5em;
+  font-family: "Bebas Neue", cursive;
+  font-size: 6em;
   text-align: center;
-}
-.websiteDescription {
-  font-size: 1.2em;
-  text-align: center;
-  font-style: italic;
-  padding-bottom: 4vh;
 }
 
 /* Website Grid Structure */
@@ -29,9 +29,41 @@
 
 /* Website Sections */
 .sectionName {
-  font-size: 1.7em;
-  padding: 0 0.3em 0.3em 0.7em;
+  font-family: "Bebas Neue", cursive;
+  font-size: 2.5em;
+  padding: 0 0.3em 0 0.7em;
 }
 .sectionContent {
   padding: 0 0.3em 0.3em 0.3em;
+}
+
+/* Task Placeholder */
+#addTask input {
+  float: left;
+  width: 85%;
+  height: 40px;
+  padding: 8px;
+  border-radius: 5px;
+  font-size: 15px;
+  border: 2px solid black;
+}
+#addTask input:focus {
+  outline: none;
+  border-color: #9d7260;
+}
+
+/* Add Button */
+#addTask button {
+  float: left;
+  width: 12%;
+  height: 40px;
+  padding: 8px;
+  margin-left: 8px;
+  border-radius: 5px;
+  font-size: 15px;
+  background-color: #9d7260;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  outline: none;
 }
