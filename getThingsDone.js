@@ -1,12 +1,19 @@
+/* Adding New Tasks | Marking Tasks as Completed | Deleting Tasks */
 document.querySelector("#idAddButton").onclick = function () {
   // Add New Task to the List
-  document.querySelector("#idListTasksToDo").innerHTML += `
+  if (document.querySelector("#idAddTask input").value.length > 0) {
+    document.querySelector("#idListTasksToDo").innerHTML += `
     <div class="taskToDo">
-        ${document.querySelector("#idAddTask input").value}
+         ${document.querySelector("#idAddTask input").value}
         <button class="buttonCompleteTask">✔️</button>
         <button class="buttonDeleteTask">❌</button>
     </div>
     `;
+    // Saving a Task Into a Variable
+    //var taskToDoSaved = document.getElementById("#idAddTask input").value;
+    // Clear a Typing Field After Submitting Task
+    //document.querySelector("#idAddTask input").value = "";
+  }
 
   // Delete Tasks
   var taskToDelete = document.querySelectorAll(".buttonDeleteTask");
@@ -38,3 +45,5 @@ document.querySelector("#idAddButton").onclick = function () {
     };
   }
 };
+
+/* Adding New Users */

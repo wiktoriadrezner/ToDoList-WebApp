@@ -31,8 +31,8 @@
   margin: 8px;
 }
 .websiteSection {
-  background-color: white;
-  padding: 0.3em;
+  border: 5px solid white;
+  background-color: #e7dbd6;
 }
 
 /* Website Sections */
@@ -42,7 +42,7 @@
   padding: 0 5px 0 40px;
 }
 .sectionContent {
-  padding: 0 5px 0 5px;
+  padding: 0 8px 0 8px;
 }
 
 /* Reusables: Placeholder & Button */
@@ -71,6 +71,7 @@
   width: 67%;
   height: 30px;
   font-size: 12px;
+  margin-bottom: 8px;
 }
 #idAddNewUser input:focus {
   outline: none;
@@ -107,6 +108,7 @@
   float: left;
   width: 100%;
   padding: 8px 8px 0 8px;
+  margin-bottom: 8px;
   border-radius: 5px;
   background-color: #b09e96;
 }
