@@ -86,6 +86,39 @@
   color: #b09e96;
 }
 
+/* Action on Selected User */
+.newUser,
+.newUserOnClick {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 5px;
+  align-items: center;
+  cursor: pointer;
+  height: 35px;
+  margin-bottom: 8px;
+  padding: 8px;
+}
+.newUser {
+  border: 1px solid #939697;
+}
+.newUserOnClick {
+  border: 1px solid #92b45a;
+  background-color: #abd567;
+}
+
+/* List with All the Users */
+#idListUsers {
+  float: left;
+  width: 100%;
+  padding: 8px 8px 0 8px;
+  margin-bottom: 8px;
+  border-radius: 5px;
+  background-color: #b09e96;
+}
+#idListUsers:empty {
+  display: none;
+}
+
 /* Task Placeholder */
 #idAddTask input {
   width: 85%;
@@ -116,6 +149,7 @@
   margin-top: 8px;
 }
 
+/* Display of Tasks in Lists */
 .taskToDo,
 .taskDone {
   display: flex;

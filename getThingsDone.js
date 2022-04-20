@@ -47,3 +47,30 @@ document.querySelector("#idAddButton").onclick = function () {
 };
 
 /* Adding New Users */
+document.querySelector("#idConfirmUser").onclick = function () {
+  // Add New User to the List
+  if (document.querySelector("#idAddNewUser input").value.length > 0) {
+    document.querySelector("#idListUsers").innerHTML += `
+      <div class="newUser" id="idNewUser">
+           ${document.querySelector("#idAddNewUser input").value}
+           <button class="buttonDeleteUser">❌</button>
+      </div>
+      `;
+  }
+
+  // Select a User
+  var userSelected = document.querySelectorAll(".newUser");
+  for (var i = 0; i < userSelected.length; i++) {
+    userSelected[i].onclick = function () {
+      this.style.backgroundColor = "#abd567";
+    };
+  }
+
+  // Delete a User
+  var userToDelete = document.querySelectorAll(".buttonDeleteUser");
+  for (var i = 0; i < userToDelete.length; i++) {
+    userToDelete[i].onclick = function () {
+      this.parentNode.remove();
+    };
+  }
+};
