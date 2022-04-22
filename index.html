@@ -1,69 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Get Things Done</title>
-    <link rel="stylesheet" href="getThingsDone.css" />
-  </head>
-  <body>
-    <header class="websiteHeader">
-      <div class="websiteName">Get Things Done</div>
-    </header>
-    <main class="websiteStructure">
-      <!-- Section 1: List of Users -->
-      <div class="websiteSection">
-        <div class="sectionName">Users</div>
-        <div class="sectionContent">
-          <!-- Current User -->
-          <h2 class="userGreeting">
-            Hi, <span id="idSelectedUser">Mysterious</span>
-          </h2>
-          <!-- Add New User -->
-          <div id="idAddNewUser">
-            <input
-              class="reusablePlaceholder"
-              type="text"
-              minlength="1"
-              maxlength="15"
-              placeholder="Enter Your Name"
-            />
-            <button class="reusableButton" id="idConfirmUser">Add User</button>
-          </div>
-          <!-- List with All Users -->
-          <ul class="listUsers" id="idListUsers"></ul>
-        </div>
-      </div>
-      <!-- Section 2: Tasks to Do -->
-      <div class="websiteSection">
-        <div class="sectionName">Tasks to Do</div>
-        <div class="sectionContent">
-          <!-- Add New Task -->
-          <div id="idAddTask">
-            <input
-              class="reusablePlaceholder"
-              type="text"
-              minlength="1"
-              maxlength="50"
-              placeholder="Enter Your Task Here"
-            />
-            <!-- Button to Submit the Task -->
-            <button class="reusableButton" id="idAddButton">Add</button>
-          </div>
-          <!-- List with New Tasks Added -->
-          <div id="idListTasksToDo"></div>
-        </div>
-      </div>
-      <!-- Section 3: Tasks Done -->
-      <div class="websiteSection listTasksDone">
-        <div class="sectionName">Tasks Done</div>
-        <div class="sectionContent">
-          <!-- List with Tasks Done -->
-          <div id="idListTasksDone"></div>
-        </div>
-      </div>
-    </main>
-    <script src="getThingsDone.js"></script>
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Get Things Done</title>
+        <link rel="stylesheet" href="getThingsDone.css" />
+    </head>
+    <body>
+        <header>
+            <div class="headerName">Get Things Done</div>
+        </header>
+        <main>
+            <!-- Section 1: List of Users -->
+            <section class="sectionContainer">
+                <div class="sectionName">Users</div>
+
+                <!-- Current User -->
+                <h2 class="userGreeting">
+                    Hi, <span id="idSelectedUser">Mysterious</span>
+                </h2>
+                <!-- Form: Add New User -->
+                <form id="newUserForm">
+                    <input
+                        id="newUserInput"
+                        class="newDataInput"
+                        type="text"
+                        minlength="1"
+                        maxlength="15"
+                        placeholder="Enter Your Name"
+                    />
+                    <input
+                        id="newUserSubmit"
+                        class="buttonSubmit"
+                        type="submit"
+                        value="Add User"
+                    />
+                </form>
+                <!-- List with Users Added -->
+                <div id="usersList"></div>
+                <ul class="listUsers" id="idListUsers"></ul>
+            </section>
+
+            <!-- Section 2: Tasks to Do -->
+            <section class="sectionContainer">
+                <div class="sectionName">Tasks to Do</div>
+
+                <!-- Form: Add New Task -->
+                <form id="newTaskForm">
+                    <input
+                        id="newTaskInput"
+                        class="newDataInput"
+                        type="text"
+                        minlength="1"
+                        maxlength="30"
+                        placeholder="Enter Your Task Here"
+                    />
+                    <input
+                        id="newTaskSubmit"
+                        class="buttonSubmit"
+                        type="submit"
+                        value="Add"
+                    />
+                </form>
+                <!-- List with Tasks To-Do -->
+                <div id="tasksList">
+                    <!--<div class="task">
+                        <div class="taskContent">
+                            <input id="taskInput" type="text" value="TASK HERE" readonly />
+                        </div>
+                        <div class="taskActions">
+                            <button class="actionEdit">EDIT</button>
+                            <button class="actionComplete">✔️</button>
+                            <button class="actionDelete">❌</button>
+                        </div>
+                    </div>-->
+                </div>
+            </section>
+
+            <!-- Section 3: Tasks Done -->
+            <section class="sectionContainer">
+                <div class="sectionName">Tasks Done</div>
+                <!-- List with Done Tasks -->
+                <div id="tasksDoneList"></div>
+            </section>
+        </main>
+        <script src="getThingsDone.js"></script>
+    </body>
 </html>

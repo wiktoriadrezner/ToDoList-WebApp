@@ -2,167 +2,274 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
 * {
-  scroll-behavior: smooth;
-  box-sizing: border-box;
-  background-color: #e7dbd6;
-  font-family: Open Sans;
-  margin: 0;
-  padding: 0;
+    /* Colors Palette */
+    --color-01: #e7dbd6;
+    --color-02: #b09e96;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    font-family: Open Sans;
+    margin: 0;
+    padding: 0;
 }
 
-/* Website Name and Description */
-.websiteHeader {
-  margin: 8px;
-}
-.websiteName {
-  background-color: #b09e96;
-  color: white;
-  font-family: "Bebas Neue", cursive;
-  font-size: 6em;
-  text-align: center;
-  padding-top: 10px;
+body {
+    background-color: var(--color-01);
 }
 
-/* Website Grid Structure */
-.websiteStructure {
-  display: grid;
-  grid-template-columns: 1fr 2fr 2fr;
-  grid-column-gap: 1vw;
-  margin: 8px;
-}
-.websiteSection {
-  border: 5px solid white;
-  background-color: #e7dbd6;
+main {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr;
+    grid-column-gap: 1vw;
+    margin: 8px;
 }
 
-/* Website Sections */
+/* Website Header */
+header {
+    margin: 8px;
+}
+.headerName {
+    background-color: var(--color-02);
+    color: white;
+    font-family: "Bebas Neue", cursive;
+    font-size: 6em;
+    text-align: center;
+    padding-top: 10px;
+}
+
+/* Sections */
+.sectionContainer {
+    border: 5px solid white;
+    background-color: #e7dbd6;
+    padding: 0 8px 0 8px;
+}
 .sectionName {
-  font-family: "Bebas Neue", cursive;
-  font-size: 2.5em;
-  padding: 0 5px 0 40px;
-}
-.sectionContent {
-  padding: 0 8px 0 8px;
+    font-family: "Bebas Neue", cursive;
+    font-size: 2.5em;
+    padding: 0 5px 0 40px;
 }
 
 /* Reusables: Placeholder & Button */
-.reusablePlaceholder {
-  float: left;
-  border-radius: 5px;
-  border: 2px solid #766963;
-  padding: 8px;
+/*.reusablePlaceholder {
+    float: left;
+    border-radius: 5px;
+    border: 2px solid #766963;
+    padding: 8px;
 }
-.reusableButton {
-  float: right;
-  border-radius: 5px;
-  background-color: #766963;
-  border: none;
-  color: #ffffff;
-  cursor: pointer;
-  outline: none;
-  padding: 8px;
+*/
+/*.reusableButton {
+    float: right;
+    border-radius: 5px;
+    background-color: #766963;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+    padding: 8px;
 }
+*/
+
+/* STYLE: Input */
+.newDataInput {
+    float: left;
+    border-radius: 5px;
+    border: 2px solid #766963;
+    padding: 8px;
+}
+/* STYLE: Button */
+.buttonSubmit {
+    float: right;
+    border-radius: 5px;
+    background-color: #766963;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+    padding: 8px;
+}
+
+#newUserInput {
+    width: 68%;
+    height: 30px;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+#newUserSubmit {
+    width: 30%;
+    height: 30px;
+    font-size: 12px;
+}
+
+#newTaskInput {
+    width: 85%;
+    height: 40px;
+    font-size: 15px;
+}
+#newTaskSubmit {
+    width: 14%;
+    height: 40px;
+    font-size: 15px;
+}
+
+#newUserInput:focus,
+#newTaskInput:focus {
+    outline: none;
+    border-color: black;
+}
+
+/*
+#idAddNewUser input:focus {
+    outline: none;
+    border-color: black;
+}
+*/
 
 /* Add New User */
 .userGreeting {
-  margin-bottom: 8px;
+    margin-bottom: 8px;
 }
-#idAddNewUser input {
-  width: 67%;
-  height: 30px;
-  font-size: 12px;
-  margin-bottom: 8px;
+/*#idAddNewUser input {
+    width: 67%;
+    height: 30px;
+    font-size: 12px;
+    margin-bottom: 8px;
 }
+*/
 #idAddNewUser input:focus {
-  outline: none;
-  border-color: black;
+    outline: none;
+    border-color: black;
 }
 #idAddNewUser button {
-  width: 30%;
-  height: 30px;
-  font-size: 12px;
+    width: 30%;
+    height: 30px;
+    font-size: 12px;
 }
 #idSelectedUser {
-  color: #b09e96;
+    color: #b09e96;
 }
 
 /* Action on Selected User */
 .newUser,
 .newUserOnClick {
-  display: flex;
-  justify-content: space-between;
-  border-radius: 5px;
-  align-items: center;
-  cursor: pointer;
-  height: 35px;
-  margin-bottom: 8px;
-  padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px;
+    align-items: center;
+    cursor: pointer;
+    height: 35px;
+    margin-bottom: 8px;
+    padding: 8px;
 }
 .newUser {
-  border: 1px solid #939697;
+    border: 1px solid #939697;
 }
 .newUserOnClick {
-  border: 1px solid #92b45a;
-  background-color: #abd567;
+    border: 1px solid #92b45a;
+    background-color: #abd567;
 }
 
 /* List with All the Users */
-#idListUsers {
-  float: left;
-  width: 100%;
-  padding: 8px 8px 0 8px;
-  margin-bottom: 8px;
-  border-radius: 5px;
-  background-color: #b09e96;
+#usersList {
+    float: left;
+    width: 100%;
+    padding: 8px 8px 0 8px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    background-color: #b09e96;
 }
-#idListUsers:empty {
-  display: none;
+#usersList:empty {
+    display: none;
 }
 
 /* Task Placeholder */
+/*
 #idAddTask input {
-  width: 85%;
-  height: 40px;
-  font-size: 15px;
+    width: 85%;
+    height: 40px;
+    font-size: 15px;
 }
 #idAddTask input:focus {
-  outline: none;
-  border-color: black;
+    outline: none;
+    border-color: black;
 }
 #idAddTask button {
-  width: 13%;
-  height: 40px;
-  font-size: 15px;
+    width: 13%;
+    height: 40px;
+    font-size: 15px;
 }
+*/
 
 /* List of Tasks to Do */
+#tasksList,
+#tasksDoneList {
+    float: left;
+    width: 100%;
+    padding: 8px 8px 0 8px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    background-color: transparent;
+    /* background-color: #b09e96; */
+}
+#tasksList {
+    margin-top: 8px;
+}
+#tasksList:empty {
+    background-color: transparent;
+}
+
+.task {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px;
+    align-items: center;
+    border: 1px solid #939697;
+    height: 40px;
+    margin-bottom: 8px;
+    padding: 8px;
+}
+.taskContent input {
+    outline: none;
+    border: none;
+    width: 200%;
+    padding-left: 5px;
+    font-size: 16px;
+}
+.taskActions button {
+    cursor: pointer;
+    border: none;
+    margin: 0 7px 0 0px;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+/*
 #idListTasksToDo,
 #idListTasksDone {
-  float: left;
-  width: 100%;
-  padding: 8px 8px 0 8px;
-  margin-bottom: 8px;
-  border-radius: 5px;
-  background-color: #b09e96;
+    float: left;
+    width: 100%;
+    padding: 8px 8px 0 8px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    background-color: #b09e96;
 }
 #idListTasksToDo {
-  margin-top: 8px;
+    margin-top: 8px;
 }
+*/
 
 /* Display of Tasks in Lists */
 .taskToDo,
 .taskDone {
-  display: flex;
-  justify-content: space-between;
-  border-radius: 5px;
-  align-items: center;
-  border: 1px solid #939697;
-  cursor: pointer;
-  height: 40px;
-  margin-bottom: 8px;
-  padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px;
+    align-items: center;
+    border: 1px solid #939697;
+    cursor: pointer;
+    height: 40px;
+    margin-bottom: 8px;
+    padding: 8px;
 }
-.buttonCompleteTask,
+/*.buttonCompleteTask,
 .buttonDeleteTask {
   float: inline-end;
-}
+}*/
