@@ -3,75 +3,136 @@ let tasksToDoStorage = [];
 let tasksDoneStorage = [];
 
 window.addEventListener("load", () => {
-    const form = document.querySelector("#newTaskForm");
-    const input = document.querySelector("#newTaskInput");
-    const list_el = document.querySelector("#tasksList");
-
-    form.addEventListener("submit", (e) => {
+    /* Add a New User */
+    const userForm = document.querySelector("#newUserForm");
+    const userInput = document.querySelector("#newUserInput");
+    const usersListElement = document.querySelector("#usersList");
+    userForm.addEventListener("submit", (e) => {
         e.preventDefault();
-        const task = input.value;
-        if (!task) {
+        /* Check Whether the Name is Entered */
+        if (!userInput.value) {
+            alert("Please, enter your name");
+            return;
+        }
+
+        /* Define Element: User */
+        const userElement = document.createElement("div");
+        userElement.classList.add("user");
+
+        /* Define Element: User Content */
+        const userContentElement = document.createElement("div");
+        userContentElement.classList.add("userContent");
+        userElement.appendChild(userContentElement);
+
+        /* Define Element: User Input */
+        const userInputElement = document.createElement("input");
+        userInputElement.classList.add("userInput");
+        userInputElement.type = "text";
+        userInputElement.value = userInput.value;
+        userInputElement.setAttribute("readonly", "readonly");
+        userInputElement.setAttribute("maxlength", 15);
+        userContentElement.appendChild(userInputElement);
+
+        /* Define Element: User Delete */
+        const userDeleteElement = document.createElement("button");
+        userDeleteElement.classList.add("userDelete");
+        userDeleteElement.innerHTML = "❌";
+        userElement.appendChild(userDeleteElement);
+
+        /* Add User to the List and Clear Input  */
+        usersListElement.appendChild(userElement);
+        const userSelected = document.getElementById("selectedUser");
+        userSelected.innerText = userInput.value;
+        userInput.value = "";
+
+        /* Select User on Click */
+        userContentElement.addEventListener("click", () => {
+            userSelected.innerText = userInputElement.value;
+            userElement.style.backgroundColor = "#B5ED7C";
+        });
+
+        /* Delete User on Click */
+        userDeleteElement.addEventListener("click", () => {
+            usersListElement.removeChild(userElement);
+            userSelected.innerText = "Mysterious";
+        });
+    });
+
+    /* Add a New Task */
+    const taskForm = document.querySelector("#newTaskForm");
+    const taskInput = document.querySelector("#newTaskInput");
+    const tasksListElement = document.querySelector("#tasksList");
+    taskForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        /* Check Whether the User Entered a Task */
+        if (!taskInput.value) {
             alert("Please, enter your task");
             return;
         }
 
-        const task_el = document.createElement("div");
-        task_el.classList.add("task");
+        /* Define Element: Task */
+        const taskElement = document.createElement("div");
+        taskElement.classList.add("task");
 
-        const task_content_el = document.createElement("div");
-        task_content_el.classList.add("taskContent");
+        /* Define Element: Task Content */
+        const taskContentElement = document.createElement("div");
+        taskContentElement.classList.add("taskContent");
+        taskElement.appendChild(taskContentElement);
 
-        task_el.appendChild(task_content_el);
+        /* Define Element: Task Input */
+        const taskInputElement = document.createElement("input");
+        taskInputElement.classList.add("taskInput");
+        taskInputElement.type = "text";
+        taskInputElement.value = taskInput.value;
+        taskInputElement.setAttribute("readonly", "readonly");
+        taskInputElement.setAttribute("maxlength", 30);
+        taskContentElement.appendChild(taskInputElement);
 
-        const task_input_el = document.createElement("input");
-        task_input_el.classList.add("taskInput");
-        task_input_el.type = "text";
-        task_input_el.value = task;
-        task_input_el.setAttribute("readonly", "readonly");
-        task_input_el.setAttribute("maxlength", 30);
+        /* Define Element: Task Actions */
+        const taskActionsElement = document.createElement("div");
+        taskActionsElement.classList.add("taskActions");
+        /* Define Element: Task Actions: Edit */
+        const taskActionEditElement = document.createElement("button");
+        taskActionEditElement.classList.add("actionEdit");
+        taskActionEditElement.innerHTML = "EDIT";
+        taskActionsElement.appendChild(taskActionEditElement);
+        /* Define Element: Task Actions: Complete */
+        const taskActionCompleteElement = document.createElement("button");
+        taskActionCompleteElement.classList.add("actionComplete");
+        taskActionCompleteElement.innerHTML = "✔️";
+        taskActionsElement.appendChild(taskActionCompleteElement);
+        /* Define Element: Task Actions: Delete */
+        const taskActionDeleteElement = document.createElement("button");
+        taskActionDeleteElement.classList.add("actionDelete");
+        taskActionDeleteElement.innerHTML = "❌";
+        taskActionsElement.appendChild(taskActionDeleteElement);
+        taskElement.appendChild(taskActionsElement);
 
-        task_content_el.appendChild(task_input_el);
+        /* Add Task to the List and Clear Input */
+        tasksListElement.appendChild(taskElement);
+        taskInput.value = "";
 
-        const task_actions_el = document.createElement("div");
-        task_actions_el.classList.add("taskActions");
-
-        const task_edit_el = document.createElement("button");
-        task_edit_el.classList.add("actionEdit");
-        task_edit_el.innerHTML = "EDIT";
-
-        const task_complete_el = document.createElement("button");
-        task_complete_el.classList.add("actionComplete");
-        task_complete_el.innerHTML = "✔️";
-
-        const task_delete_el = document.createElement("button");
-        task_delete_el.classList.add("actionDelete");
-        task_delete_el.innerHTML = "❌";
-
-        task_actions_el.appendChild(task_edit_el);
-        task_actions_el.appendChild(task_complete_el);
-        task_actions_el.appendChild(task_delete_el);
-        task_el.appendChild(task_actions_el);
-
-        list_el.appendChild(task_el);
-        input.value = "";
-
-        task_edit_el.addEventListener("click", () => {
-            if (task_edit_el.innerText == "EDIT") {
-                task_input_el.removeAttribute("readonly");
-                task_input_el.focus();
-                task_edit_el.innerText = "SAVE";
+        /* Edit Task on Click */
+        taskActionEditElement.addEventListener("click", () => {
+            if (taskActionEditElement.innerText == "EDIT") {
+                taskInputElement.removeAttribute("readonly");
+                taskInputElement.focus();
+                taskActionEditElement.innerText = "SAVE";
             } else {
-                if (!task_input_el.value) {
+                /* Forbid Submitting an Empty Task */
+                if (!taskInputElement.value) {
                     alert("Please, enter your task");
                     return;
                 } else {
-                    task_input_el.setAttribute("readonly", "readonly");
-                    task_edit_el.innerText = "EDIT";
+                    taskInputElement.setAttribute("readonly", "readonly");
+                    taskActionEditElement.innerText = "EDIT";
                 }
             }
         });
-        task_delete_el.addEventListener("click", () => {
-            list_el.removeChild(task_el);
+
+        /* Delete Task on Click */
+        taskActionDeleteElement.addEventListener("click", () => {
+            tasksListElement.removeChild(taskElement);
         });
     });
 });

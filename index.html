@@ -15,10 +15,9 @@
             <!-- Section 1: List of Users -->
             <section class="sectionContainer">
                 <div class="sectionName">Users</div>
-
                 <!-- Current User -->
                 <h2 class="userGreeting">
-                    Hi, <span id="idSelectedUser">Mysterious</span>
+                    Hi, <span id="selectedUser">Mysterious</span>
                 </h2>
                 <!-- Form: Add New User -->
                 <form id="newUserForm">
@@ -38,14 +37,23 @@
                     />
                 </form>
                 <!-- List with Users Added -->
-                <div id="usersList"></div>
-                <ul class="listUsers" id="idListUsers"></ul>
+                <div id="usersList">
+                    <!-- <div class="user">
+                        <div class="userContent">
+                            <input
+                                id="userInput"
+                                type="text"
+                                value="USER HERE"
+                                readonly
+                            />
+                        </div>
+                        <button class="userDelete">❌</button>
+                    </div> -->
+                </div>
             </section>
-
             <!-- Section 2: Tasks to Do -->
             <section class="sectionContainer">
                 <div class="sectionName">Tasks to Do</div>
-
                 <!-- Form: Add New Task -->
                 <form id="newTaskForm">
                     <input
@@ -77,7 +85,6 @@
                     </div>-->
                 </div>
             </section>
-
             <!-- Section 3: Tasks Done -->
             <section class="sectionContainer">
                 <div class="sectionName">Tasks Done</div>

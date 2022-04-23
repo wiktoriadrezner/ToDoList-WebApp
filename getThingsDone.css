@@ -3,8 +3,12 @@
 
 * {
     /* Colors Palette */
-    --color-01: #e7dbd6;
-    --color-02: #b09e96;
+    --color-00: white;
+    --color-01: black;
+    --color-02: #e7dbd6;
+    --color-03: #b09e96;
+    --color-04: #766963;
+    --color-05: #d6c1b4;
     scroll-behavior: smooth;
     box-sizing: border-box;
     font-family: Open Sans;
@@ -13,7 +17,7 @@
 }
 
 body {
-    background-color: var(--color-01);
+    background-color: var(--color-02);
 }
 
 main {
@@ -28,8 +32,8 @@ header {
     margin: 8px;
 }
 .headerName {
-    background-color: var(--color-02);
-    color: white;
+    background-color: var(--color-03);
+    color: var(--color-00);
     font-family: "Bebas Neue", cursive;
     font-size: 6em;
     text-align: center;
@@ -38,8 +42,7 @@ header {
 
 /* Sections */
 .sectionContainer {
-    border: 5px solid white;
-    background-color: #e7dbd6;
+    border: 5px solid var(--color-00);
     padding: 0 8px 0 8px;
 }
 .sectionName {
@@ -48,61 +51,49 @@ header {
     padding: 0 5px 0 40px;
 }
 
-/* Reusables: Placeholder & Button */
-/*.reusablePlaceholder {
-    float: left;
-    border-radius: 5px;
-    border: 2px solid #766963;
-    padding: 8px;
-}
-*/
-/*.reusableButton {
-    float: right;
-    border-radius: 5px;
-    background-color: #766963;
-    border: none;
-    color: #ffffff;
-    cursor: pointer;
+/* Style: Input/Button */
+#newUserInput:focus,
+#newTaskInput:focus {
     outline: none;
-    padding: 8px;
+    border-color: var(--color-01);
 }
-*/
-
-/* STYLE: Input */
 .newDataInput {
     float: left;
     border-radius: 5px;
-    border: 2px solid #766963;
+    border: 2px solid var(--color-04);
     padding: 8px;
 }
-/* STYLE: Button */
 .buttonSubmit {
     float: right;
     border-radius: 5px;
-    background-color: #766963;
+    background-color: var(--color-04);
     border: none;
-    color: #ffffff;
+    color: var(--color-00);
     cursor: pointer;
     outline: none;
     padding: 8px;
 }
 
+/* Input/Button: New User */
 #newUserInput {
     width: 68%;
     height: 30px;
     font-size: 12px;
-    margin-bottom: 8px;
+    margin: 8px 0 8px 0;
 }
 #newUserSubmit {
     width: 30%;
     height: 30px;
     font-size: 12px;
+    margin: 8px 0 8px 0;
 }
 
+/* Input/Button: New Task */
 #newTaskInput {
     width: 85%;
     height: 40px;
     font-size: 15px;
+    margin-bottom: 8px;
 }
 #newTaskSubmit {
     width: 14%;
@@ -110,166 +101,57 @@ header {
     font-size: 15px;
 }
 
-#newUserInput:focus,
-#newTaskInput:focus {
-    outline: none;
-    border-color: black;
+/* User: Selected */
+#selectedUser {
+    color: var(--color-03);
 }
 
-/*
-#idAddNewUser input:focus {
-    outline: none;
-    border-color: black;
-}
-*/
-
-/* Add New User */
-.userGreeting {
-    margin-bottom: 8px;
-}
-/*#idAddNewUser input {
-    width: 67%;
-    height: 30px;
-    font-size: 12px;
-    margin-bottom: 8px;
-}
-*/
-#idAddNewUser input:focus {
-    outline: none;
-    border-color: black;
-}
-#idAddNewUser button {
-    width: 30%;
-    height: 30px;
-    font-size: 12px;
-}
-#idSelectedUser {
-    color: #b09e96;
-}
-
-/* Action on Selected User */
-.newUser,
-.newUserOnClick {
-    display: flex;
-    justify-content: space-between;
-    border-radius: 5px;
-    align-items: center;
-    cursor: pointer;
-    height: 35px;
-    margin-bottom: 8px;
-    padding: 8px;
-}
-.newUser {
-    border: 1px solid #939697;
-}
-.newUserOnClick {
-    border: 1px solid #92b45a;
-    background-color: #abd567;
-}
-
-/* List with All the Users */
-#usersList {
-    float: left;
-    width: 100%;
-    padding: 8px 8px 0 8px;
-    margin-bottom: 8px;
-    border-radius: 5px;
-    background-color: #b09e96;
-}
-#usersList:empty {
-    display: none;
-}
-
-/* Task Placeholder */
-/*
-#idAddTask input {
-    width: 85%;
-    height: 40px;
-    font-size: 15px;
-}
-#idAddTask input:focus {
-    outline: none;
-    border-color: black;
-}
-#idAddTask button {
-    width: 13%;
-    height: 40px;
-    font-size: 15px;
-}
-*/
-
-/* List of Tasks to Do */
+/* Lists: Users/Tasks */
+#usersList,
 #tasksList,
 #tasksDoneList {
     float: left;
     width: 100%;
     padding: 8px 8px 0 8px;
-    margin-bottom: 8px;
     border-radius: 5px;
-    background-color: transparent;
-    /* background-color: #b09e96; */
-}
-#tasksList {
-    margin-top: 8px;
-}
-#tasksList:empty {
     background-color: transparent;
 }
 
+/* Style: User/Task */
+.user,
 .task {
     display: flex;
     justify-content: space-between;
     border-radius: 5px;
     align-items: center;
-    border: 1px solid #939697;
-    height: 40px;
+    border: 1.5px solid var(--color-04);
+    background-color: var(--color-05);
     margin-bottom: 8px;
     padding: 8px;
 }
+.user {
+    height: 35px;
+}
+.task {
+    height: 40px;
+}
+
+/* Input/Actions */
+.userContent input,
 .taskContent input {
+    background-color: transparent;
     outline: none;
     border: none;
     width: 200%;
     padding-left: 5px;
     font-size: 16px;
 }
+.userDelete,
 .taskActions button {
+    background-color: transparent;
     cursor: pointer;
     border: none;
     margin: 0 7px 0 0px;
     font-size: 17px;
     font-weight: bold;
 }
-
-/*
-#idListTasksToDo,
-#idListTasksDone {
-    float: left;
-    width: 100%;
-    padding: 8px 8px 0 8px;
-    margin-bottom: 8px;
-    border-radius: 5px;
-    background-color: #b09e96;
-}
-#idListTasksToDo {
-    margin-top: 8px;
-}
-*/
-
-/* Display of Tasks in Lists */
-.taskToDo,
-.taskDone {
-    display: flex;
-    justify-content: space-between;
-    border-radius: 5px;
-    align-items: center;
-    border: 1px solid #939697;
-    cursor: pointer;
-    height: 40px;
-    margin-bottom: 8px;
-    padding: 8px;
-}
-/*.buttonCompleteTask,
-.buttonDeleteTask {
-  float: inline-end;
-}*/
