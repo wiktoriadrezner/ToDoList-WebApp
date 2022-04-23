@@ -140,6 +140,7 @@ header {
 .userContent input,
 .taskContent input {
     background-color: transparent;
+    cursor: default;
     outline: none;
     border: none;
     width: 200%;

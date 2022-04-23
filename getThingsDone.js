@@ -116,9 +116,11 @@ window.addEventListener("load", () => {
         taskActionEditElement.addEventListener("click", () => {
             if (taskActionEditElement.innerText == "EDIT") {
                 taskInputElement.removeAttribute("readonly");
+                taskInputElement.style.cursor = "text";
                 taskInputElement.focus();
                 taskActionEditElement.innerText = "SAVE";
             } else {
+                taskInputElement.style.cursor = "default";
                 /* Forbid Submitting an Empty Task */
                 if (!taskInputElement.value) {
                     alert("Please, enter your task");
@@ -136,114 +138,3 @@ window.addEventListener("load", () => {
         });
     });
 });
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* Add New Tasks | Mark Tasks as Completed | Delete Tasks */
-document.querySelector("#idAddButton").onclick = function () {
-    // Add New Task to the List
-    if (document.querySelector("#idAddTask input").value.length > 0) {
-        // Add the Task to an Array
-        var newTaskInput = document.querySelector("#idAddTask input").value;
-        tasksToDoStorage.push(newTaskInput);
-        // Extend the List with a New Task
-        document.querySelector("#idListTasksToDo").innerHTML += `
-    <div class="taskToDo" id="idTaskToDo">
-        ${newTaskInput}
-        <div class="buttonPackage">
-            <button class="buttonCompleteTask">✔️</button>
-            <button class="buttonDeleteTask">❌</button>
-        </div>
-    </div>
-    `;
-        //document.querySelector("#idAddTask input").value = "";
-        // Saving a Task Into a Variable
-        //var taskToDoSaved = document.getElementById("#idAddTask input").value;
-        // Clear a Typing Field After Submitting Task
-        //document.querySelector("#idAddTask input").value = "";
-    }
-
-    // Delete Tasks
-
-    //let tasksToDoStorage = [];
-    //let tasksDoneStorage = [];
-
-    //var taskToDelete = document.querySelectorAll(".buttonDeleteTask");
-    //console.log(tasksToDoStorage.length);
-    for (var i = 0; i < tasksToDoStorage.length; i++) {
-        tasksToDoStorage[i].onclick = function () {
-            var parentElement = this.parentNode.parentNode;
-            parentElement.parentNode.removeChild(parentElement);
-        };
-    }
-    /*
-  var taskToDelete = document.querySelectorAll(".buttonDeleteTask");
-  for (var i = 0; i < taskToDelete.length; i++) {
-    taskToDelete[i].onclick = function () {
-      var parentElement = this.parentNode.parentNode;
-      parentElement.parentNode.removeChild(parentElement);
-    };
-  }
-  */
-
-    // Move Tasks to Completed
-    var taskCompleted = document.querySelectorAll(".buttonCompleteTask");
-    for (var i = 0; i < taskCompleted.length; i++) {
-        taskCompleted[i].onclick = function () {
-            var parentElement = this.parentNode.parentNode;
-            parentElement.parentNode.removeChild(parentElement);
-            // Add Completed Tasks to the List
-            document.querySelector("#idListTasksDone").innerHTML += `
-        <div class="taskDone">
-            ${document.querySelector("#idAddTask input").value}
-            <button class="buttonDeleteDoneTask">❌</button>
-        </div>
-        `;
-            // Delete Completed Task
-            var taskToDelete = document.querySelectorAll(
-                ".buttonDeleteDoneTask"
-            );
-            for (var i = 0; i < taskToDelete.length; i++) {
-                taskToDelete[i].onclick = function () {
-                    this.parentNode.remove();
-                };
-            }
-        };
-    }
-};
-
-/* Adding New Users */
-document.querySelector("#idConfirmUser").onclick = function () {
-    // Add New User to the List
-    if (document.querySelector("#idAddNewUser input").value.length > 0) {
-        document.querySelector("#idListUsers").innerHTML += `
-      <div class="newUser" id="idNewUser">
-           ${document.querySelector("#idAddNewUser input").value}
-           <button class="buttonDeleteUser">❌</button>
-      </div>
-      `;
-    }
-
-    // Select a User
-    var userSelected = document.querySelectorAll(".newUser");
-    for (var i = 0; i < userSelected.length; i++) {
-        userSelected[i].onclick = function () {
-            this.style.backgroundColor = "#abd567";
-        };
-    }
-
-    // Delete a User
-    var userToDelete = document.querySelectorAll(".buttonDeleteUser");
-    for (var i = 0; i < userToDelete.length; i++) {
-        userToDelete[i].onclick = function () {
-            this.parentNode.remove();
-        };
-    }
-};
