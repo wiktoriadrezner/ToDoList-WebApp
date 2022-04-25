@@ -1,4 +1,5 @@
-/* Arrays to Keep the Tasks To-Do/Done */
+/* Arrays to Keep Data */
+let usersStorage = [];
 let tasksToDoStorage = [];
 let tasksDoneStorage = [];
 
@@ -41,12 +42,14 @@ window.addEventListener("load", () => {
 
         /* Add User to the List and Clear Input  */
         usersListElement.appendChild(userElement);
+        usersStorage.push(userElement);
         const userSelected = document.getElementById("selectedUser");
         userSelected.innerText = userInput.value;
         userInput.value = "";
 
         /* Select User on Click */
         userContentElement.addEventListener("click", () => {
+            for (let i = 0; i < usersStorage.length; i++) {}
             userSelected.innerText = userInputElement.value;
             userElement.style.backgroundColor = "#B5ED7C";
         });
