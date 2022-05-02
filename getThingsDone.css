@@ -22,7 +22,7 @@ body {
 
 main {
     display: grid;
-    grid-template-columns: 1fr 2fr 2fr;
+    grid-template-columns: 1fr 2fr;
     grid-column-gap: 1vw;
     margin: 8px;
 }
@@ -101,15 +101,9 @@ header {
     font-size: 15px;
 }
 
-/* User: Selected */
-#selectedUser {
-    color: var(--color-03);
-}
-
 /* Lists: Users/Tasks */
 #usersList,
-#tasksList,
-#tasksDoneList {
+#tasksList {
     float: left;
     width: 100%;
     padding: 8px 8px 0 8px;
@@ -129,6 +123,9 @@ header {
     margin-bottom: 8px;
     padding: 8px;
 }
+.taskDoneColor {
+    background-color: #b5ed7c;
+}
 .user {
     height: 35px;
 }
@@ -140,10 +137,9 @@ header {
 .userContent input,
 .taskContent input {
     background-color: transparent;
-    cursor: default;
     outline: none;
     border: none;
-    width: 200%;
+    width: 330%;
     padding-left: 5px;
     font-size: 16px;
 }
@@ -155,4 +151,12 @@ header {
     margin: 0 7px 0 0px;
     font-size: 17px;
     font-weight: bold;
+}
+
+/* User: Selected */
+#userSelectedText {
+    color: var(--color-03);
+}
+.selectedUser {
+    background-color: #b5ed7c;
 }

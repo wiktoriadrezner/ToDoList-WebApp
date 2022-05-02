@@ -17,7 +17,7 @@
                 <div class="sectionName">Users</div>
                 <!-- Current User -->
                 <h2 class="userGreeting">
-                    Hi, <span id="selectedUser">Mysterious</span>
+                    Hi, <span id="userSelectedText">Mysterious</span>
                 </h2>
                 <!-- Form: Add New User -->
                 <form id="newUserForm">
@@ -61,7 +61,7 @@
                         class="newDataInput"
                         type="text"
                         minlength="1"
-                        maxlength="30"
+                        maxlength="60"
                         placeholder="Enter Your Task Here"
                     />
                     <input
@@ -73,23 +73,23 @@
                 </form>
                 <!-- List with Tasks To-Do -->
                 <div id="tasksList">
-                    <!--<div class="task">
+                    <!--
+                    <div class="task">
                         <div class="taskContent">
-                            <input id="taskInput" type="text" value="TASK HERE" readonly />
+                            <input
+                                id="taskInput"
+                                type="text"
+                                value="TASK HERE"
+                                readonly
+                            />
                         </div>
                         <div class="taskActions">
-                            <button class="actionEdit">EDIT</button>
                             <button class="actionComplete">✔️</button>
                             <button class="actionDelete">❌</button>
                         </div>
-                    </div>-->
+                    </div>
+                    -->
                 </div>
-            </section>
-            <!-- Section 3: Tasks Done -->
-            <section class="sectionContainer">
-                <div class="sectionName">Tasks Done</div>
-                <!-- List with Done Tasks -->
-                <div id="tasksDoneList"></div>
             </section>
         </main>
         <script src="getThingsDone.js"></script>

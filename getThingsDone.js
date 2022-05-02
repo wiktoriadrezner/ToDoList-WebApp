@@ -1,7 +1,6 @@
 /* Arrays to Keep Data */
 let usersStorage = [];
-let tasksToDoStorage = [];
-let tasksDoneStorage = [];
+let tasksStorage = [];
 
 window.addEventListener("load", () => {
     /* Add a New User */
@@ -19,12 +18,10 @@ window.addEventListener("load", () => {
         /* Define Element: User */
         const userElement = document.createElement("div");
         userElement.classList.add("user");
-
         /* Define Element: User Content */
         const userContentElement = document.createElement("div");
         userContentElement.classList.add("userContent");
         userElement.appendChild(userContentElement);
-
         /* Define Element: User Input */
         const userInputElement = document.createElement("input");
         userInputElement.classList.add("userInput");
@@ -33,7 +30,6 @@ window.addEventListener("load", () => {
         userInputElement.setAttribute("readonly", "readonly");
         userInputElement.setAttribute("maxlength", 15);
         userContentElement.appendChild(userInputElement);
-
         /* Define Element: User Delete */
         const userDeleteElement = document.createElement("button");
         userDeleteElement.classList.add("userDelete");
@@ -42,17 +38,27 @@ window.addEventListener("load", () => {
 
         /* Add User to the List and Clear Input  */
         usersListElement.appendChild(userElement);
-        usersStorage.push(userElement);
-        const userSelected = document.getElementById("selectedUser");
-        userSelected.innerText = userInput.value;
+        usersStorage.push(userInputElement.value);
         userInput.value = "";
 
         /* Select User on Click */
-        userContentElement.addEventListener("click", () => {
-            for (let i = 0; i < usersStorage.length; i++) {}
-            userSelected.innerText = userInputElement.value;
-            userElement.style.backgroundColor = "#B5ED7C";
-        });
+        var usersAdded = document.getElementsByClassName("user");
+        // var userSelectedTextElement = document.getElementById("userSelectedText");
+        for (var i = 0; i < usersAdded.length; i++) {
+            usersAdded[i].addEventListener(
+                "click",
+                function () {
+                    // userSelectedTextElement.innerText;
+                    var userSelectedElement =
+                        document.querySelector(".selectedUser");
+                    if (userSelectedElement) {
+                        userSelectedElement.classList.remove("selectedUser");
+                    }
+                    this.classList.add("selectedUser");
+                },
+                false
+            );
+        }
 
         /* Delete User on Click */
         userDeleteElement.addEventListener("click", () => {
@@ -76,29 +82,21 @@ window.addEventListener("load", () => {
         /* Define Element: Task */
         const taskElement = document.createElement("div");
         taskElement.classList.add("task");
-
         /* Define Element: Task Content */
         const taskContentElement = document.createElement("div");
         taskContentElement.classList.add("taskContent");
         taskElement.appendChild(taskContentElement);
-
         /* Define Element: Task Input */
         const taskInputElement = document.createElement("input");
         taskInputElement.classList.add("taskInput");
         taskInputElement.type = "text";
         taskInputElement.value = taskInput.value;
+        taskInputElement.setAttribute("maxlength", 60);
         taskInputElement.setAttribute("readonly", "readonly");
-        taskInputElement.setAttribute("maxlength", 30);
         taskContentElement.appendChild(taskInputElement);
-
         /* Define Element: Task Actions */
         const taskActionsElement = document.createElement("div");
         taskActionsElement.classList.add("taskActions");
-        /* Define Element: Task Actions: Edit */
-        const taskActionEditElement = document.createElement("button");
-        taskActionEditElement.classList.add("actionEdit");
-        taskActionEditElement.innerHTML = "EDIT";
-        taskActionsElement.appendChild(taskActionEditElement);
         /* Define Element: Task Actions: Complete */
         const taskActionCompleteElement = document.createElement("button");
         taskActionCompleteElement.classList.add("actionComplete");
@@ -111,33 +109,21 @@ window.addEventListener("load", () => {
         taskActionsElement.appendChild(taskActionDeleteElement);
         taskElement.appendChild(taskActionsElement);
 
+        /* Save the Task to an Array */
+        tasksStorage.push(taskInputElement.value);
+
         /* Add Task to the List and Clear Input */
         tasksListElement.appendChild(taskElement);
         taskInput.value = "";
 
-        /* Edit Task on Click */
-        taskActionEditElement.addEventListener("click", () => {
-            if (taskActionEditElement.innerText == "EDIT") {
-                taskInputElement.removeAttribute("readonly");
-                taskInputElement.style.cursor = "text";
-                taskInputElement.focus();
-                taskActionEditElement.innerText = "SAVE";
-            } else {
-                taskInputElement.style.cursor = "default";
-                /* Forbid Submitting an Empty Task */
-                if (!taskInputElement.value) {
-                    alert("Please, enter your task");
-                    return;
-                } else {
-                    taskInputElement.setAttribute("readonly", "readonly");
-                    taskActionEditElement.innerText = "EDIT";
-                }
-            }
-        });
-
         /* Delete Task on Click */
         taskActionDeleteElement.addEventListener("click", () => {
             tasksListElement.removeChild(taskElement);
+        });
+
+        /* Mark Task as Done */
+        taskActionCompleteElement.addEventListener("click", () => {
+            taskElement.classList.toggle("taskDoneColor");
         });
     });
 });
