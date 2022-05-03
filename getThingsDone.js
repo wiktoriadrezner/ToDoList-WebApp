@@ -18,18 +18,11 @@ window.addEventListener("load", () => {
         /* Define Element: User */
         const userElement = document.createElement("div");
         userElement.classList.add("user");
-        /* Define Element: User Content */
-        const userContentElement = document.createElement("div");
-        userContentElement.classList.add("userContent");
-        userElement.appendChild(userContentElement);
         /* Define Element: User Input */
-        const userInputElement = document.createElement("input");
+        const userInputElement = document.createElement("div");
         userInputElement.classList.add("userInput");
-        userInputElement.type = "text";
-        userInputElement.value = userInput.value;
-        userInputElement.setAttribute("readonly", "readonly");
-        userInputElement.setAttribute("maxlength", 15);
-        userContentElement.appendChild(userInputElement);
+        userInputElement.innerText = userInput.value;
+        userElement.appendChild(userInputElement);
         /* Define Element: User Delete */
         const userDeleteElement = document.createElement("button");
         userDeleteElement.classList.add("userDelete");
@@ -42,13 +35,15 @@ window.addEventListener("load", () => {
         userInput.value = "";
 
         /* Select User on Click */
+        // var userSelectedTextElement =
+        //     document.getElementById("userSelectedText");
         var usersAdded = document.getElementsByClassName("user");
-        // var userSelectedTextElement = document.getElementById("userSelectedText");
         for (var i = 0; i < usersAdded.length; i++) {
             usersAdded[i].addEventListener(
                 "click",
                 function () {
-                    // userSelectedTextElement.innerText;
+                    // console.log(userInputElement.value);
+                    // userSelectedTextElement.innerText = usersStorage[i];
                     var userSelectedElement =
                         document.querySelector(".selectedUser");
                     if (userSelectedElement) {
@@ -63,7 +58,8 @@ window.addEventListener("load", () => {
         /* Delete User on Click */
         userDeleteElement.addEventListener("click", () => {
             usersListElement.removeChild(userElement);
-            userSelected.innerText = "Mysterious";
+            console.log(userInputElement.innerText);
+            // userSelectedTextElement.innerText = "Mysterious";
         });
     });
 
@@ -82,18 +78,11 @@ window.addEventListener("load", () => {
         /* Define Element: Task */
         const taskElement = document.createElement("div");
         taskElement.classList.add("task");
-        /* Define Element: Task Content */
-        const taskContentElement = document.createElement("div");
-        taskContentElement.classList.add("taskContent");
-        taskElement.appendChild(taskContentElement);
         /* Define Element: Task Input */
-        const taskInputElement = document.createElement("input");
+        const taskInputElement = document.createElement("div");
         taskInputElement.classList.add("taskInput");
-        taskInputElement.type = "text";
-        taskInputElement.value = taskInput.value;
-        taskInputElement.setAttribute("maxlength", 60);
-        taskInputElement.setAttribute("readonly", "readonly");
-        taskContentElement.appendChild(taskInputElement);
+        taskInputElement.innerText = taskInput.value;
+        taskElement.appendChild(taskInputElement);
         /* Define Element: Task Actions */
         const taskActionsElement = document.createElement("div");
         taskActionsElement.classList.add("taskActions");
