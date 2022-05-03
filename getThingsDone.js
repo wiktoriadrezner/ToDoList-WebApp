@@ -123,7 +123,7 @@ window.addEventListener("load", () => {
 
         /* Mark Task as Done */
         taskActionCompleteElement.addEventListener("click", () => {
-            taskElement.classList.toggle("taskDoneColor");
+            taskElement.classList.toggle("taskDone");
         });
     });
 });
