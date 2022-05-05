@@ -133,16 +133,7 @@ header {
     height: 40px;
 }
 
-/* Input/Actions */
-.userContent input,
-.taskContent input {
-    background-color: transparent;
-    outline: none;
-    border: none;
-    width: 330%;
-    padding-left: 5px;
-    font-size: 16px;
-}
+/* Actions on the Buttons */
 .userDelete,
 .taskActions button {
     background-color: transparent;
@@ -153,7 +144,7 @@ header {
     font-weight: bold;
 }
 
-/* User: Selected */
+/* Selected User */
 #userSelectedText {
     color: var(--color-03);
 }

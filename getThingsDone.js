@@ -1,6 +1,7 @@
 /* Arrays to Keep Data */
 let usersStorage = [];
 let tasksStorage = [];
+var selectedUsername = "";
 
 window.addEventListener("load", () => {
     /* Add a New User */
@@ -29,36 +30,46 @@ window.addEventListener("load", () => {
         userDeleteElement.innerHTML = "❌";
         userElement.appendChild(userDeleteElement);
 
-        /* Add User to the List and Clear Input  */
+        /* Add User to the List */
         usersListElement.appendChild(userElement);
-        usersStorage.push(userInputElement.value);
+        /* Add User to the Array */
+        usersStorage.push(userInput.value);
+        /* Clear User Input  */
         userInput.value = "";
 
         /* Select User on Click */
-        // var userSelectedTextElement =
-        //     document.getElementById("userSelectedText");
+        /* Run a Loop Through the List of Added Users */
         var usersAdded = document.getElementsByClassName("user");
+        var selected;
         for (var i = 0; i < usersAdded.length; i++) {
             usersAdded[i].addEventListener(
                 "click",
                 function () {
-                    // console.log(userInputElement.value);
-                    // userSelectedTextElement.innerText = usersStorage[i];
-                    var userSelectedElement =
-                        document.querySelector(".selectedUser");
+                    var userSelectedElement = document.querySelector(".selectedUser");
                     if (userSelectedElement) {
                         userSelectedElement.classList.remove("selectedUser");
                     }
                     this.classList.add("selectedUser");
+                    //selected = userSelectedElement.querySelector(".userInput").innerText;
+                    //console.log(selected);
                 },
                 false
             );
         }
 
+        /* Change the Mysterious to Selected User */
+        //var userSelectedTextElement = document.getElementById("userSelectedText");
+        //userSelectedTextElement.innerText = selected;
+
         /* Delete User on Click */
         userDeleteElement.addEventListener("click", () => {
+            /* Get the Name of a User */
+            const userInputText = userInputElement.innerText;
+            /* Get the Index of a User */
+            const userInputIndex = usersStorage.indexOf(userInputText);
+            /* Remove the User from the Array and List */
+            usersStorage.splice(userInputIndex, 1);
             usersListElement.removeChild(userElement);
-            console.log(userInputElement.innerText);
             // userSelectedTextElement.innerText = "Mysterious";
         });
     });
