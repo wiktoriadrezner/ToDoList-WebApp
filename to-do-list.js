@@ -1,7 +1,7 @@
 /* Arrays to Keep Data */
 let usersStorage = [];
 let tasksStorage = [];
-var selectedUsername = "";
+var selectedUsername = "Mysterious";
 
 window.addEventListener("load", () => {
     /* Add a New User */
@@ -109,21 +109,27 @@ window.addEventListener("load", () => {
         taskActionsElement.appendChild(taskActionDeleteElement);
         taskElement.appendChild(taskActionsElement);
 
-        /* Save the Task to an Array */
-        tasksStorage.push(taskInputElement.value);
-
         /* Add Task to the List and Clear Input */
         tasksListElement.appendChild(taskElement);
+        /* Save the Task to an Array */
+        tasksStorage.push(taskInput.value);
+        /* Clear Task Input  */
         taskInput.value = "";
-
-        /* Delete Task on Click */
-        taskActionDeleteElement.addEventListener("click", () => {
-            tasksListElement.removeChild(taskElement);
-        });
 
         /* Mark Task as Done */
         taskActionCompleteElement.addEventListener("click", () => {
             taskElement.classList.toggle("taskDone");
+        });
+
+        /* Delete Task on Click */
+        taskActionDeleteElement.addEventListener("click", () => {
+            /* Get the Name of a Task */
+            const taskInputText = taskInputElement.innerText;
+            /* Get the Index of a Task */
+            const taskInputIndex = tasksStorage.indexOf(taskInputText);
+            /* Remove the Task from the Array and List */
+            tasksStorage.splice(taskInputIndex, 1);
+            tasksListElement.removeChild(taskElement);
         });
     });
 });

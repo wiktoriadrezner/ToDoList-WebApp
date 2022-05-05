@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Get Things Done</title>
-        <link rel="stylesheet" href="getThingsDone.css" />
+        <link rel="stylesheet" href="to-do-list.css" />
     </head>
     <body>
         <header>
@@ -16,25 +16,11 @@
             <section class="sectionContainer">
                 <div class="sectionName">Users</div>
                 <!-- Current User -->
-                <h2 class="userGreeting">
-                    Hi, <span id="userSelectedText">Mysterious</span>
-                </h2>
+                <h2 class="userGreeting">Hi, <span id="userSelectedText">Mysterious</span></h2>
                 <!-- Form: Add New User -->
                 <form id="newUserForm">
-                    <input
-                        id="newUserInput"
-                        class="newDataInput"
-                        type="text"
-                        minlength="1"
-                        maxlength="15"
-                        placeholder="Enter Your Name"
-                    />
-                    <input
-                        id="newUserSubmit"
-                        class="buttonSubmit"
-                        type="submit"
-                        value="Add User"
-                    />
+                    <input id="newUserInput" class="newDataInput" type="text" minlength="1" maxlength="15" placeholder="Enter Your Name" />
+                    <input id="newUserSubmit" class="buttonSubmit" type="submit" value="Add User" />
                 </form>
                 <!-- List with Users Added -->
                 <div id="usersList">
@@ -49,20 +35,8 @@
                 <div class="sectionName">Tasks to Do</div>
                 <!-- Form: Add New Task -->
                 <form id="newTaskForm">
-                    <input
-                        id="newTaskInput"
-                        class="newDataInput"
-                        type="text"
-                        minlength="1"
-                        maxlength="60"
-                        placeholder="Enter Your Task Here"
-                    />
-                    <input
-                        id="newTaskSubmit"
-                        class="buttonSubmit"
-                        type="submit"
-                        value="Add"
-                    />
+                    <input id="newTaskInput" class="newDataInput" type="text" minlength="1" maxlength="60" placeholder="Enter Your Task Here" />
+                    <input id="newTaskSubmit" class="buttonSubmit" type="submit" value="Add" />
                 </form>
                 <!-- List with Tasks To-Do -->
                 <div id="tasksList">
@@ -78,6 +52,6 @@
                 </div>
             </section>
         </main>
-        <script src="getThingsDone.js"></script>
+        <script src="to-do-list.js"></script>
     </body>
 </html>
