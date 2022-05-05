@@ -121,7 +121,7 @@ header {
     border: 1.5px solid var(--color-04);
     background-color: var(--color-05);
     margin-bottom: 8px;
-    padding: 8px;
+    padding: 8px 8px 8px 12px;
 }
 .taskDone {
     background-color: #b5ed7c;
@@ -130,10 +130,13 @@ header {
     height: 35px;
 }
 .task {
-    height: 40px;
+    height: 55px;
 }
 
 /* Actions on the Buttons */
+.taskActions {
+    text-align: right;
+}
 .userDelete,
 .taskActions button {
     background-color: transparent;

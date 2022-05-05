@@ -1,9 +1,36 @@
 /* Arrays to Keep Data */
 let usersStorage = [];
 let tasksStorage = [];
-var selectedUsername = "Mysterious";
+let selectedUsername = "Mysterious";
+let userSelectedTextElement = document.getElementById("userSelectedText");
+
+//let enteredUser;
+//let enteredTask;
+
+// function defineUser() {
+//     /* Define Element: User */
+//     const userElement = document.createElement("div");
+//     userElement.classList.add("user");
+//     /* Define Element: User Input */
+//     const userInputElement = document.createElement("div");
+//     userInputElement.classList.add("userInput");
+//     userInputElement.innerText = userInput.value;
+//     userElement.appendChild(userInputElement);
+//     /* Define Element: User Delete */
+//     const userDeleteElement = document.createElement("button");
+//     userDeleteElement.classList.add("userDelete");
+//     userDeleteElement.innerHTML = "❌";
+//     userElement.appendChild(userDeleteElement);
+//     /* Add User to the List */
+//     usersListElement.appendChild(userElement);
+//     /* Add User to the Array */
+//     usersStorage.push(userInput.value);
+//     /* Clear User Input  */
+//     userInput.value = "";
+// }
 
 window.addEventListener("load", () => {
+    // JSON.parse(window.localStorage.getItem("users"));
     /* Add a New User */
     const userForm = document.querySelector("#newUserForm");
     const userInput = document.querySelector("#newUserInput");
@@ -15,6 +42,7 @@ window.addEventListener("load", () => {
             alert("Please, enter your name");
             return;
         }
+        //defineUser();
 
         /* Define Element: User */
         const userElement = document.createElement("div");
@@ -29,7 +57,6 @@ window.addEventListener("load", () => {
         userDeleteElement.classList.add("userDelete");
         userDeleteElement.innerHTML = "❌";
         userElement.appendChild(userDeleteElement);
-
         /* Add User to the List */
         usersListElement.appendChild(userElement);
         /* Add User to the Array */
@@ -38,39 +65,35 @@ window.addEventListener("load", () => {
         userInput.value = "";
 
         /* Select User on Click */
-        /* Run a Loop Through the List of Added Users */
-        var usersAdded = document.getElementsByClassName("user");
-        var selected;
-        for (var i = 0; i < usersAdded.length; i++) {
-            usersAdded[i].addEventListener(
-                "click",
-                function () {
-                    var userSelectedElement = document.querySelector(".selectedUser");
-                    if (userSelectedElement) {
-                        userSelectedElement.classList.remove("selectedUser");
-                    }
-                    this.classList.add("selectedUser");
-                    //selected = userSelectedElement.querySelector(".userInput").innerText;
-                    //console.log(selected);
-                },
-                false
-            );
-        }
-
-        /* Change the Mysterious to Selected User */
-        //var userSelectedTextElement = document.getElementById("userSelectedText");
-        //userSelectedTextElement.innerText = selected;
+        userElement.addEventListener(
+            "click",
+            function () {
+                let userSelectedElement = document.querySelector(".selectedUser");
+                if (userSelectedElement) {
+                    userSelectedElement.classList.remove("selectedUser");
+                }
+                this.classList.add("selectedUser");
+                selectedUsername = this.querySelector(".userInput").innerText;
+                /* Change the Mysterious to Selected User */
+                userSelectedTextElement.innerText = selectedUsername;
+            },
+            false
+        );
 
         /* Delete User on Click */
-        userDeleteElement.addEventListener("click", () => {
+        userDeleteElement.addEventListener("click", (event) => {
             /* Get the Name of a User */
             const userInputText = userInputElement.innerText;
             /* Get the Index of a User */
             const userInputIndex = usersStorage.indexOf(userInputText);
             /* Remove the User from the Array and List */
             usersStorage.splice(userInputIndex, 1);
+            if (userElement.classList.contains("selectedUser")) {
+                selectedUsername = "Mysterious";
+                userSelectedTextElement.innerText = selectedUsername;
+            }
             usersListElement.removeChild(userElement);
-            // userSelectedTextElement.innerText = "Mysterious";
+            event.stopImmediatePropagation();
         });
     });
 
@@ -80,6 +103,11 @@ window.addEventListener("load", () => {
     const tasksListElement = document.querySelector("#tasksList");
     taskForm.addEventListener("submit", (e) => {
         e.preventDefault();
+        /* Check Whether the User Is Selected */
+        if (selectedUsername == "Mysterious") {
+            alert("Please, select a user");
+            return;
+        }
         /* Check Whether the User Entered a Task */
         if (!taskInput.value) {
             alert("Please, enter your task");
@@ -97,6 +125,11 @@ window.addEventListener("load", () => {
         /* Define Element: Task Actions */
         const taskActionsElement = document.createElement("div");
         taskActionsElement.classList.add("taskActions");
+        /* Define Element: Task Actions: Selected User */
+        const taskSelectedUserElement = document.createElement("div");
+        taskSelectedUserElement.classList.add("taskSelectedUser");
+        taskSelectedUserElement.innerText = selectedUsername;
+        taskActionsElement.appendChild(taskSelectedUserElement);
         /* Define Element: Task Actions: Complete */
         const taskActionCompleteElement = document.createElement("button");
         taskActionCompleteElement.classList.add("actionComplete");
