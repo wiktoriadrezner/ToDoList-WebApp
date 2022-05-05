@@ -119,18 +119,26 @@ header {
     border-radius: 5px;
     align-items: center;
     border: 1.5px solid var(--color-04);
-    background-color: var(--color-05);
     margin-bottom: 8px;
     padding: 8px 8px 8px 12px;
 }
-.taskDone {
-    background-color: #b5ed7c;
-}
 .user {
+    background-color: var(--color-05);
     height: 35px;
 }
 .task {
     height: 55px;
+}
+
+/* Color Change on Action */
+.task {
+    background-color: #d6c1b4;
+}
+.taskDone {
+    background-color: #b5ed7c;
+}
+.taskSelected {
+    background-color: #be9c95;
 }
 
 /* Actions on the Buttons */
@@ -148,9 +156,9 @@ header {
 }
 
 /* Selected User */
-#userSelectedText {
+#userGreetingName {
     color: var(--color-03);
 }
 .selectedUser {
-    background-color: #b5ed7c;
+    background-color: #be9c95;
 }
