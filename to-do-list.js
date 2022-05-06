@@ -1,12 +1,16 @@
-/* Arrays to Keep Data */
-let usersStorage = [];
-let tasksStorage = [];
-
+/* IMPLEMENTATION */
 let taskElement;
+let taskInputElement;
+/* Array to Store Users */
+let usersStorage = [];
+/* Array to Store Tasks and Assigned User */
+let tasksStorage = [];
+/* Set Default User to Be Mysterious */
 let selectedUsername = "Mysterious";
 let taskSelectedUserElement;
 let userSelectedTextElement = document.getElementById("userGreetingName");
 
+/* ACTIONS ON USER */
 function defineAddUser(valueUser) {
     const usersListElement = document.querySelector("#usersList");
     /* Define Element: User */
@@ -38,14 +42,22 @@ function defineAddUser(valueUser) {
             selectedUsername = this.querySelector(".userInput").innerText;
             /* Change the Greeting to Selected User */
             userSelectedTextElement.innerText = selectedUsername;
-            /* Loop Through the Array of Tasks */
-            // for (let i = 0; i < tasksStorage.length; i++) {
-            //     if (selectedUsername == tasksStorage[i].user) {
-            //         tasksStorage[i].style.backgroundColor = "#be9c95";
-            //     } else {
-            //         tasksStorage[i].style.backgroundColor = "#d6c1b4";
-            //     }
-            // }
+            /* Select Tasks That Match Selected User */
+            let allTasks = document.getElementsByClassName("task");
+            for (let i = 0; i < allTasks.length; i++) {
+                let loopUserName = allTasks[i].querySelector(".taskSelectedUser").innerText;
+                if (loopUserName === selectedUsername) {
+                    if (allTasks[i].classList.contains("taskNotSelected")) {
+                        allTasks[i].classList.remove("taskNotSelected");
+                    }
+                    allTasks[i].classList.add("taskSelected");
+                } else {
+                    if (allTasks[i].classList.contains("taskSelected")) {
+                        allTasks[i].classList.remove("taskSelected");
+                    }
+                    allTasks[i].classList.add("taskNotSelected");
+                }
+            }
         },
         false
     );
@@ -67,13 +79,14 @@ function defineAddUser(valueUser) {
     });
 }
 
+/* ACTIONS ON TASK */
 function defineAddTask(valueTask) {
     const tasksListElement = document.querySelector("#tasksList");
     /* Define Element: Task */
     let taskElement = document.createElement("div");
     taskElement.classList.add("task");
     /* Define Element: Task Input */
-    const taskInputElement = document.createElement("div");
+    taskInputElement = document.createElement("div");
     taskInputElement.classList.add("taskInput");
     taskInputElement.innerText = valueTask;
     taskElement.appendChild(taskInputElement);
@@ -98,8 +111,8 @@ function defineAddTask(valueTask) {
     taskElement.appendChild(taskActionsElement);
 
     /* Add Task to the List */
-    taskElement.style.backgroundColor = "#be9c95";
     tasksListElement.appendChild(taskElement);
+    taskElement.classList.add("taskSelected");
 
     /* Mark Task as Done */
     taskActionCompleteElement.addEventListener("click", () => {
@@ -115,12 +128,11 @@ function defineAddTask(valueTask) {
         /* Remove the Task from the Array and List */
         tasksStorage.splice(taskInputIndex, 1);
         tasksListElement.removeChild(taskElement);
-        console.log(tasksStorage);
     });
 }
 
 window.addEventListener("load", () => {
-    /* Add a New User */
+    /* ADD A NEW USER */
     const userForm = document.querySelector("#newUserForm");
     const userInput = document.querySelector("#newUserInput");
     userForm.addEventListener("submit", (e) => {
@@ -140,7 +152,7 @@ window.addEventListener("load", () => {
         userInput.value = "";
     });
 
-    /* Add a New Task */
+    /* ADD A NEW TASK */
     const taskForm = document.querySelector("#newTaskForm");
     const taskInput = document.querySelector("#newTaskInput");
     taskForm.addEventListener("submit", (e) => {
@@ -164,22 +176,10 @@ window.addEventListener("load", () => {
             task: taskInput.value,
             user: selectedUsername,
         });
-        console.log(tasksStorage);
+        // let taskJSON = JSON.stringify(tasksStorage);
+        // console.log(taskJSON);
 
         /* Clear Task Input  */
         taskInput.value = "";
     });
-
-    //
-
-    // class="taskSelectedUser"
-    /*
-    let userSelectedElement = document.querySelector(".selectedUser");
-            if (userSelectedElement) {
-                userSelectedElement.classList.remove("selectedUser");
-            }
-            this.classList.add("selectedUser");
-            selectedUsername = this.querySelector(".userInput").innerText;
-            userSelectedTextElement.innerText = selectedUsername;
-    */
 });

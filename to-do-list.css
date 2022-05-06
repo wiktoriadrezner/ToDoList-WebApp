@@ -119,6 +119,7 @@ header {
     border-radius: 5px;
     align-items: center;
     border: 1.5px solid var(--color-04);
+    background-color: var(--color-05);
     margin-bottom: 8px;
     padding: 8px 8px 8px 12px;
 }
@@ -131,14 +132,14 @@ header {
 }
 
 /* Color Change on Action */
-.task {
+.taskNotSelected {
     background-color: #d6c1b4;
-}
-.taskDone {
-    background-color: #b5ed7c;
 }
 .taskSelected {
     background-color: #be9c95;
+}
+.taskDone {
+    background-color: #b5ed7c;
 }
 
 /* Actions on the Buttons */
