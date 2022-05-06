@@ -39,13 +39,13 @@ function defineAddUser(valueUser) {
             /* Change the Greeting to Selected User */
             userSelectedTextElement.innerText = selectedUsername;
             /* Loop Through the Array of Tasks */
-            for (let i = 0; i < tasksStorage.length; i++) {
-                if (selectedUsername == tasksStorage[i].user) {
-                    tasksStorage[i].style.backgroundColor = "#be9c95";
-                } else {
-                    tasksStorage[i].style.backgroundColor = "#d6c1b4";
-                }
-            }
+            // for (let i = 0; i < tasksStorage.length; i++) {
+            //     if (selectedUsername == tasksStorage[i].user) {
+            //         tasksStorage[i].style.backgroundColor = "#be9c95";
+            //     } else {
+            //         tasksStorage[i].style.backgroundColor = "#d6c1b4";
+            //     }
+            // }
         },
         false
     );
@@ -109,12 +109,13 @@ function defineAddTask(valueTask) {
     /* Delete Task on Click */
     taskActionDeleteElement.addEventListener("click", () => {
         /* Get the Name of a Task */
-        const taskInputText = taskInputElement.innerText;
+        let taskInputText = taskInputElement.innerText;
         /* Get the Index of a Task */
-        const taskInputIndex = tasksStorage.indexOf(taskInputText);
+        let taskInputIndex = tasksStorage.findIndex((item) => item.task === taskInputText);
         /* Remove the Task from the Array and List */
         tasksStorage.splice(taskInputIndex, 1);
         tasksListElement.removeChild(taskElement);
+        console.log(tasksStorage);
     });
 }
 
@@ -163,6 +164,7 @@ window.addEventListener("load", () => {
             task: taskInput.value,
             user: selectedUsername,
         });
+        console.log(tasksStorage);
 
         /* Clear Task Input  */
         taskInput.value = "";
