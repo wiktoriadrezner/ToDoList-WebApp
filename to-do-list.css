@@ -3,12 +3,14 @@
 
 * {
     /* Colors Palette */
-    --color-00: white;
-    --color-01: black;
-    --color-02: #e7dbd6;
-    --color-03: #b09e96;
-    --color-04: #766963;
-    --color-05: #d6c1b4;
+    --color-00: #fbfbfb; /* Section Border */
+    --color-01: #3f3f3f; /* Section Name */
+    --color-02: #efefef; /* Main Background */
+    --color-03: #616958; /* Header */
+    --color-04: #5d6454; /* Button + Border */
+    --color-05: #dbdbdb; /* Task/User */
+    --color-06: #bebebe; /* Task/User Selected */
+    --color-07: #c0d7a8; /* Task Done */
     scroll-behavior: smooth;
     box-sizing: border-box;
     font-family: Open Sans;
@@ -29,24 +31,24 @@ main {
 
 /* Website Header */
 header {
-    margin: 8px;
+    margin: 8px 8px 0 8px;
 }
 .headerName {
-    background-color: var(--color-03);
-    color: var(--color-00);
+    color: var(--color-03);
     font-family: "Bebas Neue", cursive;
-    font-size: 6em;
+    font-size: 7.5em;
     text-align: center;
-    padding-top: 10px;
 }
 
 /* Sections */
 .sectionContainer {
     border: 5px solid var(--color-00);
     padding: 0 8px 0 8px;
+    height: fit-content;
 }
 .sectionName {
     font-family: "Bebas Neue", cursive;
+    color: var(--color-01);
     font-size: 2.5em;
     padding: 0 5px 0 40px;
 }
@@ -124,7 +126,6 @@ header {
     padding: 8px 8px 8px 12px;
 }
 .user {
-    background-color: var(--color-05);
     height: 35px;
 }
 .task {
@@ -133,13 +134,13 @@ header {
 
 /* Color Change on Action */
 .taskNotSelected {
-    background-color: #d6c1b4;
+    background-color: var(--color-05);
 }
 .taskSelected {
-    background-color: #be9c95;
+    background-color: var(--color-06);
 }
 .taskDone {
-    background-color: #b5ed7c;
+    background-color: var(--color-07);
 }
 
 /* Actions on the Buttons */
@@ -158,8 +159,8 @@ header {
 
 /* Selected User */
 #userGreetingName {
-    color: var(--color-03);
+    color: var(--color-06);
 }
 .selectedUser {
-    background-color: #be9c95;
+    background-color: var(--color-06);
 }
