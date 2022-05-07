@@ -169,20 +169,24 @@ function defineAddTask(valueTask, selectedUsername) {
 window.addEventListener("load", () => {
     /* GET USER DATA FROM LOCAL STORAGE */
     usersStorage = JSON.parse(localStorage.getItem("savedUsers"));
-    for (let i = 0; i < usersStorage.length; i++) {
-        defineAddUser(usersStorage[i]);
+    if (usersStorage.length !== 0) {
+        for (let i = 0; i < usersStorage.length; i++) {
+            defineAddUser(usersStorage[i]);
+        }
     }
 
     /* GET TASK DATA FROM LOCAL STORAGE */
     tasksStorage = JSON.parse(localStorage.getItem("savedTasks"));
-    for (let i = 0; i < tasksStorage.length; i++) {
-        // Check the Array for Done Tasks
-        if (tasksStorage[i].ifDone === "1") {
-            taskIsDone = "1"; // Task Is Done
-        } else if (tasksStorage[i].ifDone === "0") {
-            taskIsDone = "0"; // Task Is Not Done
+    if (tasksStorage.length !== 0) {
+        for (let i = 0; i < tasksStorage.length; i++) {
+            // Check the Array for Done Tasks
+            if (tasksStorage[i].ifDone === "1") {
+                taskIsDone = "1"; // Task Is Done
+            } else if (tasksStorage[i].ifDone === "0") {
+                taskIsDone = "0"; // Task Is Not Done
+            }
+            defineAddTask(tasksStorage[i].task, tasksStorage[i].user);
         }
-        defineAddTask(tasksStorage[i].task, tasksStorage[i].user);
     }
 
     /* ADD NEW USER */
