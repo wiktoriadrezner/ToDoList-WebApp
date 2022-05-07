@@ -29,6 +29,17 @@ main {
     margin: 8px;
 }
 
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-family: "Bebas Neue", cursive;
+    font-size: 1.2em;
+    color: var(--color-04);
+    margin: 0px 8px 4px 8px;
+    text-align: center;
+}
+
 /* Website Header */
 header {
     margin: 8px 8px 0 8px;
