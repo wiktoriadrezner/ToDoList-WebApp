@@ -168,16 +168,16 @@ function defineAddTask(valueTask, selectedUsername) {
 
 window.addEventListener("load", () => {
     /* GET USER DATA FROM LOCAL STORAGE */
-    usersStorage = JSON.parse(localStorage.getItem("savedUsers"));
-    if (usersStorage.length !== 0) {
+    if (localStorage.getItem("savedUsers") !== null) {
+        usersStorage = JSON.parse(localStorage.getItem("savedUsers"));
         for (let i = 0; i < usersStorage.length; i++) {
             defineAddUser(usersStorage[i]);
         }
     }
 
     /* GET TASK DATA FROM LOCAL STORAGE */
-    tasksStorage = JSON.parse(localStorage.getItem("savedTasks"));
-    if (tasksStorage.length !== 0) {
+    if (localStorage.getItem("savedTasks") !== null) {
+        tasksStorage = JSON.parse(localStorage.getItem("savedTasks"));
         for (let i = 0; i < tasksStorage.length; i++) {
             // Check the Array for Done Tasks
             if (tasksStorage[i].ifDone === "1") {
