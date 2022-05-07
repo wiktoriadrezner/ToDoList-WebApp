@@ -1,11 +1,9 @@
 /* IMPLEMENTATION */
-let taskElement;
-let taskInputElement;
 /* Array to Store Users */
 let usersStorage = [];
 /* Array to Store Tasks and Assigned User */
 let tasksStorage = [];
-/* Set Default User to Be Mysterious */
+/* Set Default User and Greeting to Be Mysterious */
 let selectedUsername = "Mysterious";
 let taskSelectedUserElement;
 let userSelectedTextElement = document.getElementById("userGreetingName");
@@ -30,7 +28,7 @@ function defineAddUser(valueUser) {
     /* Add User to the List */
     usersListElement.appendChild(userElement);
 
-    /* Select User on Click */
+    /* SELECT USER ON CLICK */
     userElement.addEventListener(
         "click",
         function () {
@@ -62,31 +60,35 @@ function defineAddUser(valueUser) {
         false
     );
 
-    /* Delete User on Click */
+    /* DELETE USER ON CLICK */
     userDeleteElement.addEventListener("click", (event) => {
-        /* Get the Name of a User */
+        /* Get the Name of the User */
         const userInputText = userInputElement.innerText;
-        /* Get the Index of a User */
+        /* Get the Index of the User */
         const userInputIndex = usersStorage.indexOf(userInputText);
-        /* Remove the User from the Array and List */
+        /* Remove the User from the Array */
         usersStorage.splice(userInputIndex, 1);
+        /* Update Local Storage */
+        localStorage.savedUsers = JSON.stringify(usersStorage);
+        /* Change the Greeting Name If Not Selected */
         if (userElement.classList.contains("selectedUser")) {
             selectedUsername = "Mysterious";
             userSelectedTextElement.innerText = selectedUsername;
         }
+        /* Remove the User from the List */
         usersListElement.removeChild(userElement);
         event.stopImmediatePropagation();
     });
 }
 
 /* ACTIONS ON TASK */
-function defineAddTask(valueTask) {
+function defineAddTask(valueTask, selectedUsername) {
     const tasksListElement = document.querySelector("#tasksList");
     /* Define Element: Task */
-    let taskElement = document.createElement("div");
+    const taskElement = document.createElement("div");
     taskElement.classList.add("task");
     /* Define Element: Task Input */
-    taskInputElement = document.createElement("div");
+    const taskInputElement = document.createElement("div");
     taskInputElement.classList.add("taskInput");
     taskInputElement.innerText = valueTask;
     taskElement.appendChild(taskInputElement);
@@ -112,27 +114,46 @@ function defineAddTask(valueTask) {
 
     /* Add Task to the List */
     tasksListElement.appendChild(taskElement);
-    taskElement.classList.add("taskSelected");
+    /* Apply Class If the User is Selected */
+    if (userSelectedTextElement.innerText !== "Mysterious") {
+        taskElement.classList.add("taskSelected");
+    }
 
-    /* Mark Task as Done */
+    /* MARK TASK AS DONE */
     taskActionCompleteElement.addEventListener("click", () => {
         taskElement.classList.toggle("taskDone");
     });
 
-    /* Delete Task on Click */
+    /* DELETE TASK ON CLICK */
     taskActionDeleteElement.addEventListener("click", () => {
-        /* Get the Name of a Task */
+        /* Get the Name of the Task */
         let taskInputText = taskInputElement.innerText;
-        /* Get the Index of a Task */
+        /* Get the Index of the Task */
         let taskInputIndex = tasksStorage.findIndex((item) => item.task === taskInputText);
-        /* Remove the Task from the Array and List */
+        /* Remove the Task from the Array */
         tasksStorage.splice(taskInputIndex, 1);
+        /* Update Local Storage */
+        localStorage.savedTasks = JSON.stringify(tasksStorage);
+        /* Remove the Task from the List */
         tasksListElement.removeChild(taskElement);
     });
 }
 
 window.addEventListener("load", () => {
-    /* ADD A NEW USER */
+    /* GET USER DATA FROM LOCAL STORAGE */
+    usersStorage = JSON.parse(localStorage.getItem("savedUsers"));
+    for (let i = 0; i < usersStorage.length; i++) {
+        defineAddUser(usersStorage[i]);
+    }
+
+    /* GET TASK DATA FROM LOCAL STORAGE */
+    tasksStorage = JSON.parse(localStorage.getItem("savedTasks"));
+    for (let i = 0; i < tasksStorage.length; i++) {
+        defineAddTask(tasksStorage[i].task, tasksStorage[i].user);
+        console.log(tasksStorage[i].user);
+    }
+
+    /* ADD NEW USER */
     const userForm = document.querySelector("#newUserForm");
     const userInput = document.querySelector("#newUserInput");
     userForm.addEventListener("submit", (e) => {
@@ -142,17 +163,17 @@ window.addEventListener("load", () => {
             alert("Please, enter your name");
             return;
         }
-
-        /* Call a Function to Update/Create User */
+        /* Call Function to Update/Create User */
         defineAddUser(userInput.value);
-
-        /* Save User to the Array */
+        /* Save User to Array */
         usersStorage.push(userInput.value);
-        /* Clear User Input  */
+        /* Save User to Local Storage */
+        localStorage.savedUsers = JSON.stringify(usersStorage);
+        /* Clear User Input */
         userInput.value = "";
     });
 
-    /* ADD A NEW TASK */
+    /* ADD NEW TASK */
     const taskForm = document.querySelector("#newTaskForm");
     const taskInput = document.querySelector("#newTaskInput");
     taskForm.addEventListener("submit", (e) => {
@@ -162,24 +183,21 @@ window.addEventListener("load", () => {
             alert("Please, select a user");
             return;
         }
-        /* Check Whether the User Entered a Task */
+        /* Check Whether the User Entered the Task */
         if (!taskInput.value) {
             alert("Please, enter your task");
             return;
         }
-
-        /* Call a Function to Update/Create Task */
-        defineAddTask(taskInput.value);
-
-        /* Save Task to the Array */
+        /* Call Function to Update/Create Task */
+        defineAddTask(taskInput.value, selectedUsername);
+        /* Save Task to Array */
         tasksStorage.push({
             task: taskInput.value,
             user: selectedUsername,
         });
-        // let taskJSON = JSON.stringify(tasksStorage);
-        // console.log(taskJSON);
-
-        /* Clear Task Input  */
+        /* Save Task to Local Storage */
+        localStorage.savedTasks = JSON.stringify(tasksStorage);
+        /* Clear Task Input */
         taskInput.value = "";
     });
 });
