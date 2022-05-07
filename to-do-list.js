@@ -1,11 +1,11 @@
 /* IMPLEMENTATION */
+let taskIsDone;
 /* Array to Store Users */
 let usersStorage = [];
 /* Array to Store Tasks and Assigned User */
 let tasksStorage = [];
 /* Set Default User and Greeting to Be Mysterious */
 let selectedUsername = "Mysterious";
-let taskSelectedUserElement;
 let userSelectedTextElement = document.getElementById("userGreetingName");
 
 /* ACTIONS ON USER */
@@ -96,7 +96,7 @@ function defineAddTask(valueTask, selectedUsername) {
     const taskActionsElement = document.createElement("div");
     taskActionsElement.classList.add("taskActions");
     /* Define Element: Task Actions: Selected User */
-    taskSelectedUserElement = document.createElement("div");
+    const taskSelectedUserElement = document.createElement("div");
     taskSelectedUserElement.classList.add("taskSelectedUser");
     taskSelectedUserElement.innerText = selectedUsername;
     taskActionsElement.appendChild(taskSelectedUserElement);
@@ -119,9 +119,36 @@ function defineAddTask(valueTask, selectedUsername) {
         taskElement.classList.add("taskSelected");
     }
 
+    /* UPDATE DONE TASKS FROM LOCAL STORAGE */
+    if (taskIsDone === "1") {
+        taskElement.classList.add("taskDone");
+        taskIsDone = "0";
+    } else if (taskIsDone === "0") {
+        taskElement.classList.remove("taskDone");
+    }
+
     /* MARK TASK AS DONE */
     taskActionCompleteElement.addEventListener("click", () => {
-        taskElement.classList.toggle("taskDone");
+        /* Get the Name of the Task */
+        let taskInputText = taskInputElement.innerText;
+        let taskInputUser = taskSelectedUserElement.innerText;
+        for (let i = 0; i < tasksStorage.length; i++) {
+            /* Find the Pair in the Array */
+            if (tasksStorage[i].task === taskInputText && tasksStorage[i].user === taskInputUser) {
+                /* 0 - Task Is Not Done, 1 - Task Is Done */
+                if (tasksStorage[i].ifDone === "0") {
+                    tasksStorage[i].ifDone = "1";
+                    taskElement.classList.add("taskDone");
+                    /* Update Local Storage */
+                    localStorage.savedTasks = JSON.stringify(tasksStorage);
+                } else if (tasksStorage[i].ifDone === "1") {
+                    tasksStorage[i].ifDone = "0";
+                    taskElement.classList.remove("taskDone");
+                    /* Update Local Storage */
+                    localStorage.savedTasks = JSON.stringify(tasksStorage);
+                }
+            }
+        }
     });
 
     /* DELETE TASK ON CLICK */
@@ -149,8 +176,13 @@ window.addEventListener("load", () => {
     /* GET TASK DATA FROM LOCAL STORAGE */
     tasksStorage = JSON.parse(localStorage.getItem("savedTasks"));
     for (let i = 0; i < tasksStorage.length; i++) {
+        // Check the Array for Done Tasks
+        if (tasksStorage[i].ifDone === "1") {
+            taskIsDone = "1"; // Task Is Done
+        } else if (tasksStorage[i].ifDone === "0") {
+            taskIsDone = "0"; // Task Is Not Done
+        }
         defineAddTask(tasksStorage[i].task, tasksStorage[i].user);
-        console.log(tasksStorage[i].user);
     }
 
     /* ADD NEW USER */
@@ -194,6 +226,7 @@ window.addEventListener("load", () => {
         tasksStorage.push({
             task: taskInput.value,
             user: selectedUsername,
+            ifDone: "0", // Task is Not Done
         });
         /* Save Task to Local Storage */
         localStorage.savedTasks = JSON.stringify(tasksStorage);
