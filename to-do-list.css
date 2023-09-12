@@ -1,0 +1,177 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
+* {
+    /* Colors Palette */
+    --color-00: #fbfbfb; /* Section Border */
+    --color-01: #3f3f3f; /* Section Name */
+    --color-02: #efefef; /* Main Background */
+    --color-03: #616958; /* Header */
+    --color-04: #5d6454; /* Button + Border */
+    --color-05: #dbdbdb; /* Task/User */
+    --color-06: #bebebe; /* Task/User Selected */
+    --color-07: #c0d7a8; /* Task Done */
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    font-family: Open Sans;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--color-02);
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-column-gap: 1vw;
+    margin: 8px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-family: "Bebas Neue", cursive;
+    font-size: 1.2em;
+    color: var(--color-04);
+    margin: 0px 8px 4px 8px;
+    text-align: center;
+}
+
+/* Website Header */
+header {
+    margin: 8px 8px 0 8px;
+}
+.headerName {
+    color: var(--color-03);
+    font-family: "Bebas Neue", cursive;
+    font-size: 7.5em;
+    text-align: center;
+}
+
+/* Sections */
+.sectionContainer {
+    border: 5px solid var(--color-00);
+    padding: 0 8px 0 8px;
+    height: fit-content;
+}
+.sectionName {
+    font-family: "Bebas Neue", cursive;
+    color: var(--color-01);
+    font-size: 2.5em;
+    padding: 0 5px 0 40px;
+}
+
+/* Style: Input/Button */
+#newUserInput:focus,
+#newTaskInput:focus {
+    outline: none;
+    border-color: var(--color-01);
+}
+.newDataInput {
+    float: left;
+    border-radius: 5px;
+    border: 2px solid var(--color-04);
+    padding: 8px;
+}
+.buttonSubmit {
+    float: right;
+    border-radius: 5px;
+    background-color: var(--color-04);
+    border: none;
+    color: var(--color-00);
+    cursor: pointer;
+    outline: none;
+    padding: 8px;
+}
+
+/* Input/Button: New User */
+#newUserInput {
+    width: 68%;
+    height: 30px;
+    font-size: 12px;
+    margin: 8px 0 8px 0;
+}
+#newUserSubmit {
+    width: 30%;
+    height: 30px;
+    font-size: 12px;
+    margin: 8px 0 8px 0;
+}
+
+/* Input/Button: New Task */
+#newTaskInput {
+    width: 85%;
+    height: 40px;
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+#newTaskSubmit {
+    width: 14%;
+    height: 40px;
+    font-size: 15px;
+}
+
+/* Lists: Users/Tasks */
+#usersList,
+#tasksList {
+    float: left;
+    width: 100%;
+    padding: 8px 8px 0 8px;
+    border-radius: 5px;
+    background-color: transparent;
+}
+
+/* Style: User/Task */
+.user,
+.task {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px;
+    align-items: center;
+    border: 1.5px solid var(--color-04);
+    background-color: var(--color-05);
+    margin-bottom: 8px;
+    padding: 8px 8px 8px 12px;
+}
+.user {
+    height: 35px;
+}
+.task {
+    height: 55px;
+}
+
+/* Color Change on Action */
+.taskNotSelected {
+    background-color: var(--color-05);
+}
+.taskSelected {
+    background-color: var(--color-06);
+}
+.taskDone {
+    background-color: var(--color-07);
+}
+
+/* Actions on the Buttons */
+.taskActions {
+    text-align: right;
+}
+.userDelete,
+.taskActions button {
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    margin: 0 7px 0 0px;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+/* Selected User */
+#userGreetingName {
+    color: var(--color-06);
+}
+.selectedUser {
+    background-color: var(--color-06);
+}

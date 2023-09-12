@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Get Things Done</title>
+        <link rel="stylesheet" href="to-do-list.css" />
+    </head>
+    <body>
+        <header>
+            <div class="headerName">Get Things Done</div>
+        </header>
+        <main>
+            <!-- Section 1: List of Users -->
+            <section class="sectionContainer">
+                <div class="sectionName">Users</div>
+                <!-- Current User -->
+                <h2 class="userGreeting">Hi, <span id="userGreetingName">Mysterious</span></h2>
+                <!-- Form: Add New User -->
+                <form id="newUserForm">
+                    <input id="newUserInput" class="newDataInput" type="text" minlength="1" maxlength="15" placeholder="Enter Your Name" />
+                    <input id="newUserSubmit" class="buttonSubmit" type="submit" value="Add User" />
+                </form>
+                <!-- List with Users Added -->
+                <div id="usersList">
+                    <!-- <div class="user">
+                        <div class="userInput"></div>
+                        <button class="userDelete">❌</button>
+                    </div> -->
+                </div>
+            </section>
+            <!-- Section 2: Tasks to Do -->
+            <section class="sectionContainer">
+                <div class="sectionName">Tasks to Do</div>
+                <!-- Form: Add New Task -->
+                <form id="newTaskForm">
+                    <input id="newTaskInput" class="newDataInput" type="text" minlength="1" maxlength="60" placeholder="Enter Your Task Here" />
+                    <input id="newTaskSubmit" class="buttonSubmit" type="submit" value="Add" />
+                </form>
+                <!-- List with Tasks To-Do -->
+                <div id="tasksList">
+                    <!--
+                    <div class="task">
+                        <div class="taskInput"></div>
+                        <div class="taskActions">
+                            <div class="taskSelectedUser"></div>
+                            <button class="actionComplete">✔️</button>
+                            <button class="actionDelete">❌</button>
+                        </div>
+                    </div>
+                    -->
+                </div>
+            </section>
+        </main>
+        <footer>CODED AND DESIGNED BY WIKTORIA DREZNER</footer>
+        <script src="to-do-list.js"></script>
+    </body>
+</html>
